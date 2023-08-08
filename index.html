@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <i class="fa fa-bars menu-btn"></i>
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="cover-image"></div>
+        <div class="player-body"></div>
+        <div class="list-wrapper">
+            <table class="list" id="playlist">
+                <tr class="song">
+                    <td class="no">
+                        <h5>1</h5>
+                    </td>
+                    <td class="title">
+                        <h6>song title</h6>
+                    </td>
+                    <td class="length">
+                        <h5>2:03</h5>
+                    </td>
+                    <td>
+                        <i class="fa fa-heart"></i>
+                    </td>
+                </tr>
+                <!-- <tr class="song">
+                    <td class="no">
+                        <h5>2</h5>
+                    </td>
+                    <td class="title">
+                        <h6>song title</h6>
+                    </td>
+                    <td class="length">
+                        <h5>2:03</h5>
+                    </td>
+                    <td>
+                        <i class="fa fa-heart"></i>
+                    </td>
+                </tr> -->
+            </table>
+        </div>
+        <div class="info">
+            <h2>song title</h2>
+            <h3>artist</h3>
+        </div>
+        <div class="bottombar">
+            <div class="bar">
+                <div class="dot"></div>
+                <div class="time">
+                    <h5 class="current-time">00:00</h5>
+                    <h5 class="duration">00:00</h5>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fa fa-backward" id="prev"></i>
+                <i class="fa fa-play" id="playpause"></i>
+                <i class="fa fa-forward" id="next"></i>
+            </div>
+        </div>
+
+        <div class="more-controls">
+            <i class="fa fa-heart" id="current-favourite"></i>
+            <i class="fa fa-random" id="shuffle"></i>
+            <i class="fa fa-repeat" id="repeat"></i>
+            <div class="volume-container">
+                <button id="muteButton" class="volume-icon">
+                    <span class="material-icons" id="volume-up">volume_up</span>
+                </button>
+                <div class="volume-bar-container">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+                </div>
+            </div>
+        </div>
+        <p class="current-song-title">song1</p>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1850990ada.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
