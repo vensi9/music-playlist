@@ -91,12 +91,10 @@ function init() {
     updatePlaylist(songs);
     loadSong(currentSong);
 }
-
 init();
 
 function updatePlaylist(songs) {
     // remove any existing element 
-
     playlistContainer.innerHTML = "";
 
     // use for each on songs array
@@ -107,7 +105,6 @@ function updatePlaylist(songs) {
 
         // check if included in favorites array
         const isFavourite = favorites.includes(index);
-
 
         // create a tr to wrapper songs
         const tr = document.createElement("tr");
@@ -129,11 +126,10 @@ function updatePlaylist(songs) {
 
         playlistContainer.appendChild(tr);
 
-
-        // lets play sonng when clicked on playlist songs
+        // lets play song when clicked on playlist songs
         tr.addEventListener("click", (e) => {
 
-            // lets add to favourite when clicked on heart
+            // lets add to favorite when clicked on heart
             if (e.target.classList.contains("fa-heart")) {
                 addToFavourits(index);
                 e.target.classList.toggle("active");
@@ -149,7 +145,6 @@ function updatePlaylist(songs) {
             playing = true;
         })
 
-
         const audioForDuration = new Audio(`data1/${src}`);
         audioForDuration.addEventListener("loadedmetadata1", () => {
             const duration = audioForDuration.duration;
@@ -160,29 +155,24 @@ function updatePlaylist(songs) {
     });
 }
 
-
 function formatTime(time) {
     // formate time like 2:30
     let minutes = Math.floor(time / 60);
     let seconds = Math.floor(time % 60);
 
-    // add traling zero if seconds less than 10
+    // add trailing zero if seconds less than 10
     seconds = seconds < 10 ? `0${seconds}` : seconds;
     return `${minutes}:${seconds}`;
 }
 
-
 // lets add audio play functionality 
-
 
 function loadSong(num) {
     // change all the title and times to current song
-
     infoWrapper.innerHTML = `
     <h2>${songs[num].title}</h2>
     <h3>${songs[num].artist}</h3>`
     currentSongTitle.innerHTML = songs[num].title;
-
 
     // change th cover image
     coverImage.style.backgroundImage = `url(data1/${songs[num].img_src})`;
@@ -198,17 +188,12 @@ function loadSong(num) {
         // if not remove active 
         currentFavourite.classList.remove("active");
     }
-
 }
 
-
-
 // lets add play pause next prev functionality
-
 const playPauseBtn = document.querySelector("#playpause"),
     nextBtn = document.querySelector("#next"),
     prevBtn = document.querySelector("#prev");
-
 
 playPauseBtn.addEventListener("click", () => {
     if (playing) {
@@ -221,18 +206,17 @@ playPauseBtn.addEventListener("click", () => {
         playPauseBtn.classList.replace("fa-play", "fa-pause");
         playing = true;
         audio.play();
-
     }
 });
 
 function nextSong() {
-    // shuffle when plau=ying next song
+    // shuffle when playing next song
     if (shuffle) {
         shuffleFunc();
         loadSong(currentSong);
-
-        // return because we dont want to play next song now
+        // return because we don't want to play next song now
     }
+
     // if current song is not last in playlist
     if (currentSong < songs.length - 1) {
         // load the next song
@@ -240,8 +224,8 @@ function nextSong() {
     } else {
         // else if its last song then play first
         currentSong = 0;
-
     }
+
     loadSong(currentSong);
     // after load is song was playing keep playing current too
     // we need to play if playing true so instead of return make next if to else if
@@ -251,12 +235,10 @@ function nextSong() {
 }
 nextBtn.addEventListener("click", nextSong);
 
-
 function prevSong() {
-    //    same on prev songs 
+    // same on prev songs 
     if (shuffle) {
         shuffleFunc();
-
         // return because we don't want to play next song now
     }
 
@@ -268,28 +250,22 @@ function prevSong() {
     }
     loadSong(currentSong);
 
-
     // after load is song was playing keep playing current too
-
     if (playing) {
         audio.play();
     }
-
 }
 
 // songs 1 repeated that means shuffle working
 prevBtn.addEventListener("click", prevSong);
 
-
-
 function addToFavourits(index) {
-    // check if alrady in favourites then remove
+    // check if already in favorites then remove
     if (favorites.includes(index)) {
         favorites = favorites.filter((item) => item / index);
 
-        // if current playing song is removed also remove currentfavourite
+        // if current playing song is removed also remove currentfavorite
         currentFavourite.classList.remove("active");
-
     } else {
         // if not already in favorite add
         favorites.push(index);
@@ -299,25 +275,23 @@ function addToFavourits(index) {
             currentFavourite.classList.add("active");
         }
     }
-    // after adding favourite rerender playlist to show favourites
+    // after adding favorite rerender playlist to show favorites
     updatePlaylist(songs);
 }
 
-// also add to favourite current playing song when clicked  heart
+// also add to favorite current playing song when clicked  heart
 currentFavourite.addEventListener("click", () => {
     currentFavourite.classList.toggle("active");
     addToFavourits(currentSong);
 })
 
-// lets add shuffle functionaity
+// lets add shuffle functionality
 const shuffleBtn = document.querySelector("#shuffle")
-
 function shuffleSongs() {
     // if shuffle false make it true or vice versa
     shuffle = !shuffle;
     shuffleBtn.classList.toggle("active");
 }
-
 shuffleBtn.addEventListener("click", shuffleSongs);
 
 // if shuffle true shuffle songs when playing next or prev
@@ -330,11 +304,10 @@ function shuffleFunc() {
 }
 
 // repeat functionality
-
 const repeatBtn = document.querySelector("#repeat");
 function repeatSong() {
     if (repeat === 0) {
-        // if repeat id off make it 1 that means repeaat current song
+        // if repeat id off make it 1 that means repeat current song
         repeat = 1;
         // if repeat on make button active
         repeatBtn.classList.add("active");
@@ -350,9 +323,8 @@ function repeatSong() {
     }
 }
 
-
 repeatBtn.addEventListener("click", repeatSong);
-// on one click its repeat === 1 on second repeat ===2 on thirs repeat ===0 and revise
+// on one click its repeat === 1 on second repeat ===2 on third repeat ===0 and revise
 
 // now if repeat on on audio end
 audio.addEventListener("ended", () => {
@@ -381,7 +353,6 @@ audio.addEventListener("ended", () => {
             audio.play();
         }
     }
-
 });
 
 // progress function
@@ -404,7 +375,6 @@ function progress() {
 // update progress on audio timeupdate event 
 audio.addEventListener("timeupdate", progress);
 
-
 // change progress when clicked on bar
 function setProgress(e) {
     let width = this.clientWidth;
@@ -415,46 +385,51 @@ function setProgress(e) {
 
 progressBar.addEventListener("click", setProgress);
 
-
-
-
-// volume control
-
+// Volume control
 var volumeSlider = document.getElementById("volumeSlider");
 var muteButton = document.getElementById("muteButton");
 var volumeBarContainer = document.querySelector(".volume-bar-container");
-var previousVolume = songs.volume;
+var previousVolume = audio.volume;
 
 if (volumeSlider) {
+    // If volume slider exists 
     volumeSlider.addEventListener("input", function () {
-        if (songs) {
-            songs.volume = volumeSlider.value / 100;
+        // When the volume slider's input changes
+        if (audio) {
+            // If audio element exists
+            audio.volume = volumeSlider.value / 100;
         }
     });
-    songs.addEventListener("volumechange", function () {
+    audio.addEventListener("volumechange", function () {
+        // When the volume of the audio changes
         if (volumeSlider) {
-            volumeSlider.value = songs.volume * 100;
+            // If volume slider exists
+            volumeSlider.value = audio.volume * 100; // Update the volume slider value to reflect the audio volume
         }
-
     });
-};
+}
 
 if (muteButton) {
+    // If mute button exists
     muteButton.addEventListener("click", function () {
-        if (songs.volume > 0) {
-            previousVolume = songs.volume;
-            songs.volume = 0;
-            muteButton.innerHTML = '<span class="material-icons">volume_off</span>';
+        // When the mute button is clicked
+        if (audio.volume > 0) {
+            // If the audio volume is greater than 0
+            previousVolume = audio.volume;
+            audio.volume = 0;
+            muteButton.innerHTML = '<span class="material-icons" style="font-size:17px;">volume_off</span>';
         } else {
-            songs.volume = previousVolume;
-            muteButton.innerHTML = '<span class="material-icons">volume_up</span>';
+            audio.volume = previousVolume;
+            muteButton.innerHTML = '<span class="material-icons" style="font-size:17px;">volume_up</span>';
         }
     });
     muteButton.addEventListener("mouseenter", function () {
-        volumeBarContainer.classList.add("active");
+        // When mouse enters the mute button
+        volumeBarContainer.classList.add("active"); // Add active class to the volume bar container
     });
 
     volumeBarContainer.addEventListener("mouseleave", function () {
-        volumeBarContainer.classList.remove("active");
+        // When mouse leaves the volume bar container
+        volumeBarContainer.classList.remove("active"); // Remove active class from the volume bar container
     });
 }

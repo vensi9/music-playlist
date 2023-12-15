@@ -170,12 +170,6 @@ i.active {
     transition: all 0.3s;
 }
 
-/* 
-.container.active .current-song-title {
-    bottom: -10px;
-
-} */
-
 .info {
     position: absolute;
     left: 50%;
@@ -192,8 +186,8 @@ i.active {
 }
 
 .container.active .info h3 {
-text-align: left;
-color: #ffffffcb;    
+    text-align: left;
+    color: #ffffffcb;
 }
 
 .info h3 {
@@ -202,11 +196,6 @@ color: #ffffffcb;
 }
 
 .container.active .info {
-    /* top: 66px;
-    left: 126px;
-    text-align: center;
-    transform: translateX(0);
-    color: #111; */
     top: 80px;
     transform: translateX(0);
     left: 20px;
@@ -316,8 +305,6 @@ color: #ffffffcb;
     transition: all 0.3s;
 }
 
-
-
 /* for volume */
 
 .volume-container {
@@ -337,15 +324,12 @@ color: #ffffffcb;
     cursor: pointer;
 }
 
-.volume-icon:hover {
-    /* opacity: 0.7; */
-}
-
 .volume-bar-container {
     position: absolute;
-    top: -50px;
-    left: 0;
+    top: -18px;
     display: none;
+    rotate: -90deg;
+    left: -10px;
 }
 
 .volume-bar-container.active {
