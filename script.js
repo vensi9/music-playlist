@@ -146,7 +146,7 @@ function updatePlaylist(songs) {
         })
 
         const audioForDuration = new Audio(`data1/${src}`);
-        audioForDuration.addEventListener("loadedmetadata1", () => {
+        audioForDuration.addEventListener("loadedmetadata", () => {
             const duration = audioForDuration.duration;
 
             let songDuration = formatTime(duration);
@@ -365,7 +365,7 @@ function progress() {
 
     // update time elements
     currentTimeEL.innerHTML = formatTime(currentTime);
-    DurationEL.innerHTML = formatTime(currentTime);
+    DurationEL.innerHTML = formatTime(duration);
 
     // lets move the progress dot
     let progressPercentage = (currentTime / duration) * 100;
