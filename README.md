@@ -4,7 +4,7 @@
 
 ## Preview
 
-![](./preview.png)
+![](./music.png)
 
 ## Features
 

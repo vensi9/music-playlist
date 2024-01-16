@@ -348,3 +348,11 @@ i.active {
 #muteButton {
     color: #fff;
 }
+@media screen and (max-width:355px) {
+.bar{width: 90%;}
+}
+@media screen and (max-width:280px) {
+    .container {
+       height: 115vh;
+    }
+}
