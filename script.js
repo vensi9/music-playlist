@@ -117,7 +117,7 @@ function updatePlaylist(songs) {
                 <h6>${title}</h6>
             </td>
             <td class="length">
-            <h5>2:03</h5>
+            <h5></h5>
             </td>
             <td>
             <i class="fa fa-heart ${isFavourite ? "active" : ""}"></i>
